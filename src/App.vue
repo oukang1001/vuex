@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-   <div>hello world</div>
+   <div>{{$store.getters.getmsg}}</div>
+   <div>{{$store.state.count}}</div>
+   <button @click="handleUpdateClick">点击修改</button>
   </div>
 </template>
 
@@ -11,7 +13,16 @@ export default {
   name: 'App',
   components: {
     
-  }
+  },
+  mounted(){
+    // console.log(this.$store)
+    this.$store.dispatch("updateCount",123);
+  },
+   methods:{
+     handleUpdateClick(){
+       this.$store.commit("updatemsg","你好");
+     }
+   }
 }
 </script>
 
